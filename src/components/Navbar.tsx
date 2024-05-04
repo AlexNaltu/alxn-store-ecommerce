@@ -31,13 +31,16 @@ const Navbar = () => {
   const pathname = usePathname();
 
   if (pathname === "/sign-in" || pathname === "/sign-up") return null;
+  if (pathname.startsWith("/admin")) return null;
 
   return (
     <>
       <NavLogIn />
       <nav className="bg-fourth custom-shadow">
         <Wrapper className="flex items-center justify-between">
-          <Image src="/ALXNSTORE.svg" alt="logo" width={128} height={77} />
+          <Link href="/">
+            <Image src="/ALXNSTORE.svg" alt="logo" width={128} height={77} />
+          </Link>
           <div className="flex items-center gap-2 md:gap-10">
             <div className="flex items-center">
               <DropdownMenu>
@@ -62,9 +65,11 @@ const Navbar = () => {
                 </Button>
               </div>
             </div>
-            <Button className="bg-white rounded-full hover:bg-third hover:text-white transition-all ease-linear duration-200 px-2">
-              How to buy
-            </Button>
+            <Link href={"/howtobuy"}>
+              <Button className="bg-white rounded-full hover:bg-third hover:text-white transition-all ease-linear duration-200 px-2">
+                How to buy
+              </Button>
+            </Link>
           </div>
         </Wrapper>
       </nav>

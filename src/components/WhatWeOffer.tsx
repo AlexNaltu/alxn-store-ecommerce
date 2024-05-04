@@ -8,7 +8,7 @@ import {
   CardTitle,
 } from "./ui/card";
 import Wrapper from "./Wrapper";
-import { hotGamesData, offerData } from "@/lib/data";
+import { hotGamesData, offerData } from "@/lib/constants";
 import { Fade } from "react-awesome-reveal";
 import Image from "next/image";
 

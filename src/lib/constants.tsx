@@ -70,3 +70,26 @@ export const hotGamesData = [
     href: "/games/apex",
   },
 ];
+
+export const howToButData = [
+  {
+    title: "Select Products and Add to Cart",
+    description:
+      "Browse through our extensive range of products and select the items you desire.",
+  },
+  {
+    title: "Proceed to Checkout",
+    description:
+      "Once you have finalized your selection, proceed to checkout by clicking on the shopping cart icon at the top right corner of the screen. Review your chosen items to confirm they are correct, then click on the Checkout button to proceed.",
+  },
+  {
+    title: "Test Your Purchase",
+    description:
+      "Upon successful payment, you will receive a confirmation email containing details of your order. Take this opportunity to test your newly acquired products to ensure they meet your expectations and requirements.",
+  },
+  {
+    title: "Enjoy 30-Day Guarantee",
+    description:
+      "We stand behind the quality of our products. Should you encounter any issues or if the product does not meet your expectations within 30 days of purchase, simply contact our customer support team for assistance. We offer a hassle-free 30-day guarantee to ensure your complete satisfaction with your purchase.",
+  },
+];

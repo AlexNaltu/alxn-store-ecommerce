@@ -2,13 +2,9 @@ import type { Metadata } from "next";
 import { Bungee_Inline } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
-import {
-  ClerkProvider,
-  SignInButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
-} from "@clerk/nextjs";
+import { ClerkProvider } from "@clerk/nextjs";
+import { dark } from "@clerk/themes";
+import TrpcProvider from "@/components/providers/trpc-provider";
 
 const bungee = Bungee_Inline({ subsets: ["latin"], weight: ["400"] });
 
@@ -23,15 +19,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
-      <html lang="en">
-        <body
-          className={`${bungee.className} bg-primary  flex flex-col min-h-screen`}
-        >
-          <Navbar />
-          <main className="flex-1"> {children}</main>
-        </body>
-      </html>
+    <ClerkProvider appearance={{ baseTheme: dark }}>
+      <TrpcProvider>
+        <html lang="en">
+          <body
+            className={`${bungee.className} bg-primary  flex flex-col min-h-screen`}
+          >
+            <Navbar />
+            <main className="flex-1"> {children}</main>
+          </body>
+        </html>
+      </TrpcProvider>
     </ClerkProvider>
   );
 }

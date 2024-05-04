@@ -1,6 +1,15 @@
-import { type ClassValue, clsx } from "clsx"
-import { twMerge } from "tailwind-merge"
+import { type ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+import type { UserResource } from "@clerk/types";
+import type { User } from "@clerk/nextjs/server";
 
 export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
+  return twMerge(clsx(inputs));
+}
+
+export function getUserEmail(user: UserResource | User | null) {
+  const email =
+    user?.emailAddresses?.find((e) => e.id === user.primaryEmailAddressId)?.emailAddress ?? "";
+
+  return email;
 }
