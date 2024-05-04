@@ -11,6 +11,7 @@ const page = () => {
           title: "",
           description: "",
           image_url: "",
+          price: 0,
         }}
       />
     </div>

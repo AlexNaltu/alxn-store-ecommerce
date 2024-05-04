@@ -4,12 +4,14 @@ import { Product } from "@prisma/client";
 import db from "@/db/db";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
+import { formatCurrency, formatNumber } from "@/lib/formatters";
 
 // schema for the product
 const productSchema = z.object({
   title: z.string().min(1).max(1000),
   description: z.string().min(1).max(3000),
   image_url: z.string().min(1).max(10000),
+  priceInCents: z.coerce.number().int().min(1),
 });
 
 // interface for the form state
@@ -18,6 +20,7 @@ interface ProductFormState {
     title?: string[];
     description?: string[];
     image_url?: string[];
+    priceInCents?: string[];
     _form?: string[];
   };
 }
@@ -32,6 +35,7 @@ export async function createProduct(
     title: formData.get("title"),
     description: formData.get("description"),
     image_url: formData.get("image_url"),
+    priceInCents: formData.get("priceInCents"),
   });
 
   // if the form data is invalid, return the errors
@@ -50,6 +54,7 @@ export async function createProduct(
         title: result.data.title,
         description: result.data.description,
         image_url: result.data.image_url,
+        priceInCents: result.data.priceInCents,
       },
     });
   } catch (error: unknown) {

@@ -12,7 +12,7 @@ const Hero = () => {
         <h1 className="text-white text-3xl min-[450px]:text-4xl sm:text-6xl">
           Are you looking for accounts? <br /> We got you!
         </h1>
-        <Link href="/accounts">
+        <Link href="/products">
           <Button className="flex gap-3 items-center bg-third text-white w-fit text-xs sm:text-lg hover:bg-black transition-all duration-200 ease-out lg:px-6">
             Buy Now <MdOutlineArrowRightAlt size={20} />
           </Button>

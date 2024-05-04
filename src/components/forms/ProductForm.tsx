@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { useFormState } from "react-dom";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
@@ -10,6 +10,7 @@ interface FormErrors {
   title?: string[];
   description?: string[];
   image_url?: string[];
+  price?: number[];
 }
 
 interface FormState {
@@ -22,6 +23,7 @@ interface ProductFormProps {
     title: string;
     description: string;
     image_url: string;
+    price: number;
   };
 }
 
@@ -30,6 +32,7 @@ const ProductForm = ({ formAction, initialData }: ProductFormProps) => {
     errors: {},
   });
 
+  const [priceInCents, setPriceInCents] = useState<number>();
   return (
     <form
       action={action}
@@ -46,6 +49,17 @@ const ProductForm = ({ formAction, initialData }: ProductFormProps) => {
       <label htmlFor="description">Description</label>
       <Textarea id="description" name="description" />
       {formState.errors.title && <h1>{formState.errors.title.join(",")} </h1>}
+
+      <label htmlFor="price">Price</label>
+      <Input
+        type="number"
+        id="priceInCents"
+        name="priceInCents"
+        value={priceInCents}
+        onChange={(e) => setPriceInCents(Number(e.target.value))}
+      />
+      {formState.errors.price && <h1>{formState.errors.price.join(",")} </h1>}
+
       <Button type="submit" className="text-white">
         Submit
       </Button>

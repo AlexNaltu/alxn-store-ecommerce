@@ -14,9 +14,9 @@ const ProductPage = async () => {
   const products = await db.product.findMany();
   return (
     <>
-      <div className="max-w-4xl mx-auto my-10 text-2xl flex justify-between">
+      <div className="max-w-6xl mx-auto my-10 text-2xl flex justify-between px-2">
         {products && products.length > 0 ? (
-          <div>
+          <div className="flex w-full flex-wrap gap-2">
             {products.map((item) => (
               <Card className="max-w-[250px]" key={item.id}>
                 <CardContent className="flex flex-col gap-2 items-center">
