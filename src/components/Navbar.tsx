@@ -12,7 +12,7 @@ import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { SearchCheckIcon } from "lucide-react";
 import { MdOutlinePerson } from "react-icons/md";
-import { BsPersonFillAdd } from "react-icons/bs";
+import { BsCart, BsPersonFillAdd } from "react-icons/bs";
 import { MdOutlineArrowRightAlt } from "react-icons/md";
 import Wrapper from "./Wrapper";
 import { usePathname } from "next/navigation";
@@ -30,7 +30,12 @@ const UserButton = dynamic(
 const Navbar = () => {
   const pathname = usePathname();
 
-  if (pathname === "/sign-in" || pathname === "/sign-up") return null;
+  if (
+    pathname === "/sign-in" ||
+    pathname === "/sign-up" ||
+    pathname === "/cart"
+  )
+    return null;
   if (pathname.startsWith("/admin")) return null;
 
   return (
@@ -69,6 +74,9 @@ const Navbar = () => {
               <Button className="bg-white rounded-full hover:bg-third hover:text-white transition-all ease-linear duration-200 px-2">
                 How to buy
               </Button>
+            </Link>
+            <Link href={"/cart"}>
+              <BsCart size={24} className="text-white hover:text-third" />
             </Link>
           </div>
         </Wrapper>

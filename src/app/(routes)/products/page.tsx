@@ -18,7 +18,7 @@ const ProductsPage = async () => {
               <Link
                 href={`/products/${item.id}`}
                 key={item.id}
-                className="flex gap-3 bg-third hover:bg-fourth transition-all duration-200 ease-in p-2 rounded-lg flex-col max-w-sm lg:flex-row lg:max-w-none"
+                className="flex gap-3 border-b-2 transition-all duration-200 ease-in px-2 py-6 flex-col max-w-sm lg:flex-row lg:max-w-none"
               >
                 <Image
                   src={item.image_url}
@@ -35,7 +35,9 @@ const ProductsPage = async () => {
                   <div className="mt-4 text-xs lg:text-sm">
                     <p>Price: {formatCurrency(item.priceInCents)}</p>
                   </div>
-                  <Button className="hover:bg-third">Add To Cart</Button>
+                  <Button className="bg-secondary text-black hover:text-white hover:bg-black transition-all duration-200 ease-in">
+                    Add To Cart
+                  </Button>
                 </div>
               </Link>
             ))}
