@@ -1,4 +1,6 @@
 import { fetchProducts } from "@/actions/fetch-product";
+import { incrementProductQuantity } from "@/actions/increment-quantity";
+import AddToCartBtn from "@/components/cart-components/AddToCartBtn";
 import Wrapper from "@/components/Wrapper";
 import { Button } from "@/components/ui/button";
 import { formatCurrency, formatNumber } from "@/lib/formatters";
@@ -7,7 +9,9 @@ import Link from "next/link";
 import React from "react";
 
 const ProductsPage = async () => {
+  // Fetch all products
   const products = await fetchProducts();
+
   return (
     <>
       <Wrapper className="flex justify-center">
@@ -15,8 +19,7 @@ const ProductsPage = async () => {
           <h1 className="text-3xl text-white mt-10">Browse Our Products</h1>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3  text-white  mb-10 lg:mb-20 ">
             {products.map((item) => (
-              <Link
-                href={`/products/${item.id}`}
+              <div
                 key={item.id}
                 className="flex gap-3 border-b-2 transition-all duration-200 ease-in px-2 py-6 flex-col max-w-sm lg:flex-row lg:max-w-none"
               >
@@ -35,11 +38,12 @@ const ProductsPage = async () => {
                   <div className="mt-4 text-xs lg:text-sm">
                     <p>Price: {formatCurrency(item.priceInCents)}</p>
                   </div>
-                  <Button className="bg-secondary text-black hover:text-white hover:bg-black transition-all duration-200 ease-in">
-                    Add To Cart
-                  </Button>
+                  <AddToCartBtn
+                    productId={item.id}
+                    incrementProductQuantity={incrementProductQuantity}
+                  />
                 </div>
-              </Link>
+              </div>
             ))}
           </div>
         </div>

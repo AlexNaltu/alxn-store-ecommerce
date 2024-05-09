@@ -10,8 +10,11 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
+// Product Page
 const ProductPage = async () => {
+  // Fetch all products
   const products = await db.product.findMany();
+  // Render the products or a message if no products are found
   return (
     <>
       <div className="max-w-6xl mx-auto my-10 text-2xl flex justify-between px-2">

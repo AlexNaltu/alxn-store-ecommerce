@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Bungee_Inline } from "next/font/google";
-import AdminNavbar from "@/components/AdminNavbar";
+import AdminNavbar from "@/app/admin/_components/AdminNavbar";
 
 export const dynamic = "force-dynamic";
 

@@ -1,10 +1,17 @@
+import { getCart } from "@/lib/cart";
 import React from "react";
+import CartEntry from "./CartEntry";
 
-const CartPage = () => {
+const CartPage = async () => {
+  const cart = await getCart();
   return (
-    <div className="text-white text-2xl max-w-4xl mx-auto py-20">
-      Your Cart is empty
-    </div>
+    <>
+      <div>
+        {cart?.items.map((cartItem) => (
+          <CartEntry cartItem={cartItem} key={cartItem.id} />
+        ))}
+      </div>
+    </>
   );
 };
 
